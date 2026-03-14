@@ -4,21 +4,27 @@ server:
 spring:
   application:
     name: api-gateway
+
   cloud:
     gateway:
-      mvc:
-        routes:
-          - id: order-ms
-            uri: lb://order-ms
-            predicates:
-              - Path=/order-ms/api/**
-            filters:
-              - StripPrefix=1
+      routes:
+
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+
+        - id: order-ms
+          uri: lb://order-ms
+          predicates:
+            - Path=/order-ms/api/**
+          filters:
+            - StripPrefix=1
+
       discovery:
         locator:
           enabled: true
           lower-case-service-id: true
-
 
 eureka:
   client:
