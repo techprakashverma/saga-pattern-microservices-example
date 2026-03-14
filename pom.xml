@@ -25,6 +25,7 @@
         <module>payment-ms</module>
         <module>delivery-ms</module>
         <module>notification-ms</module>
+        <module>auth-service</module>
     </modules>
 
     <dependencyManagement>
